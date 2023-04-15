@@ -10,11 +10,29 @@ Polydelta has drawn on its distinctive understanding of public sector technology
 These two models have been the most accurate in predicting records from publicly available FOIA records/libraries, and identifying the correct agency component when records are not available in the public domain.
 
 ### Installation
-In order to install the appropriate dependencies for this project, please follow the instructions below:
+In order to properly install the requirements for this project, please follow the instructions below:
 
-1. 
-2. 
-3. 
+Install [Anaconda](https://docs.anaconda.com/anaconda/install/index.html)
+
+In the Terminal, clone the repository:
+```
+git clone https://github.com/Polydelta-ai/doj-foia-model-portfolio.git
+```
+
+In the Terminal, setup a [virtual conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) via the `environment.yml`:
+```
+conda env create -f environment.yml
+```
+
+Verify the environment was installed correctly via:
+```
+conda env list
+```
+
+Activate the environment:
+```
+conda activate doj-foia-env
+```
 
 ### Instructions
 Test text.
