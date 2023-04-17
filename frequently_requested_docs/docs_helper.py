@@ -9,6 +9,23 @@ import torch
 
 from frequently_requested_docs.docs_config import MODEL_NAMES
 
+def test_sentence(sentence, model, corpus_docs, corpus_embeddings, TOP_K):
+
+    # encode sentence to get sentence embeddings
+    sentence_embedding = model.encode(sentence, convert_to_tensor=True)
+
+    # compute similarity scores of the sentence with the corpus
+    cos_scores = util.pytorch_cos_sim(sentence_embedding, corpus_embeddings)[0]
+
+    # Sort the results in decreasing order and get the first TOP_K
+    top_results = np.argpartition(-cos_scores, range(TOP_K))[0:TOP_K]
+
+    print("Sentence:", sentence, "\n")
+    print("Top", TOP_K, "most similar sentences in corpus:")
+    for idx in top_results[0:TOP_K]:
+        print(corpus_docs.iloc[int(idx)]["Document"], "(Score: %.4f)" % (cos_scores[idx]))
+
+
 def getSaveName(model_name):
     ret = ""
     for i, letter in enumerate(model_name):
@@ -23,18 +40,18 @@ def getEmbeddingPath(save_name):
 
 def getModel(model_name, save_name):
     # if model not saved 
-    if not os.path.exists("models/" + save_name):
+    if not os.path.exists("frequently_requested_docs/models/" + save_name):
         # download model
         print("Downloading the model, this might take a while...")
         model = SentenceTransformer(model_name)
         
         # save model
         print("Storing model in file")
-        model.save("models/" + save_name)
+        model.save("frequently_requested_docs/models/" + save_name)
         return model
     else:
         print("Loading model from disc")
-        return SentenceTransformer("models/" + save_name)
+        return SentenceTransformer("frequently_requested_docs/models/" + save_name)
     
 def loadEmbeddings(model, embedding_path, corpus_docs):
     # if path doesnt exist, 
