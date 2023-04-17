@@ -21,7 +21,7 @@ def test_sentence(sentence, model, corpus_docs, corpus_embeddings, TOP_K):
     top_results = np.argpartition(-cos_scores, range(TOP_K))[0:TOP_K]
 
     print("Sentence:", sentence, "\n")
-    print("Top", TOP_K, "most similar sentences in corpus:")
+    print("Top", TOP_K, "most similar documents in corpus:")
     for idx in top_results[0:TOP_K]:
         print(corpus_docs.iloc[int(idx)]["Document"], "(Score: %.4f)" % (cos_scores[idx]))
 
