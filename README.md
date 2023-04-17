@@ -19,9 +19,9 @@ git clone https://github.com/Polydelta-ai/doj-foia-model-portfolio.git
 ```
 
 Verify the cloning was successful, by running:
-'''
+```
 cd doj-foia-model-portfolio
-'''
+```
 
 In the Terminal, setup a [virtual conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) via the `environment.yml`:
 ```
