@@ -18,6 +18,11 @@ In the Terminal, clone the repository:
 git clone https://github.com/Polydelta-ai/doj-foia-model-portfolio.git
 ```
 
+Verify the cloning was successful, by running:
+```
+cd doj-foia-model-portfolio
+```
+
 In the Terminal, setup a [virtual conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) via the `environment.yml`:
 ```
 conda env create -f environment.yml
@@ -28,10 +33,19 @@ Verify the environment was installed correctly via:
 conda env list
 ```
 
-Activate the environment:
+Install the Jupyter Notebook Kernel:
 ```
-conda activate doj-foia-env
+conda install nb_conda_kernels
 ```
 
 ### Instructions
-Test text.
+To begin testing the Frequently Requested Document Search and the Agency Recommendation Service models, open the Jupyter Notebook interface via the Terminal, by running:
+```
+jupyter notebook
+```
+
+This will open a webpage where you will see the model portfolio's contents. Select either the `frequently_requested_docs_models.ipynb` or `agency_finder_models.ipynb` notebooks.
+
+Once the notebook is open, navigate to the `Kernel` tab at the top of the page, and hover your mouse over `Change Kernel` and select `Python[conda env: doj-foia-env].`
+
+This may cause a pop up to appear asking you to `Try and restart the kernel` , select the `Don't restart` option. this is a known error with Jupyter Notebooks and should not occur after your first time running the application.

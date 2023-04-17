@@ -78,7 +78,6 @@ def loadEmbeddings(model, embedding_path, corpus_docs):
         return (corpus_docs, corpus_embeddings)
 
 
-# DO NOT USE/CHANGE UNLESS DISCUSSED FIRST, needs to be modified in tandem with loadEmbeddings
 # define a new structure for saving embeddings
 # currently saved as (corpus_docs, embeddings) pairs
 def changeEmbeddingSave(corpus_docs):
@@ -108,22 +107,6 @@ def addAgencytoSavedEmbeddings():
         with open(embedding_path, "wb") as fOut:
             pickle.dump({'docs': corpus_docs, 'embeddings': corpus_embeddings}, fOut)
 
-
-        # get old embeddings and corpus
-        # with open(embedding_path, "rb") as fIn:
-        #     cache_data = pickle.load(fIn)
-        #     print(type(cache_data['docs']))
-        #     new_embeddings = torch.unbind(cache_data['embeddings'])
-        #     new_corpus = cache_data['docs']
-
-        #     # add new corpus to embeddings and corpus
-        #     add_sentences = add_corpus['Document'].to_list()
-        #     new_embeddings += torch.unbind(model.encode(add_sentences, convert_to_tensor=True, show_progress_bar=True))
-        #     new_embeddings = torch.stack(new_embeddings)
-        #     new_corpus = pd.concat([new_corpus, add_corpus])
-
-        # with open(embedding_path[:-4] + '2' + '.pkl', "wb") as fOut:
-        #     pickle.dump({'docs': new_corpus, 'embeddings': new_embeddings}, fOut)
 
 # DOWNLOAD ALL MODELS (DOES NOTHING IF MODELS ALREADY ON DISK)
 def downloadAllModels():
